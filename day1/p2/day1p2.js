@@ -7,7 +7,7 @@ for (cal of fs.readFileSync('../input.txt', 'utf8').split(/\n/)) {
     if (cal) {
         sum += Number(cal)
     } else {
-        const minIndex = maxes.indexOf(Math.min(...maxes));
+        const minIndex = maxes.reduce((p, c, i, a) => c >= a[p] ? p : i, -1);
         maxes[minIndex] = Math.max(maxes[minIndex], sum)
         sum = 0;
     }
