@@ -7,6 +7,7 @@ const findBadges = file => {
     let groups = [];
 
     while (lines.length) {
+        // Hopefully the length is divisible by 3, as it should be
         groups.push(lines.splice(0, 3))
     }
 
@@ -14,6 +15,7 @@ const findBadges = file => {
 }
 
 const findCommon = arr => {
+    // Using object lookup, the time should only be O(3n)
     const obj = {};
 
     for (let l of arr[0]) {
@@ -34,6 +36,9 @@ const findCommon = arr => {
 }
 
 const calculatePriority = letter => {
+    // Calculates priority depending on whether the letter is capitalised or not according to:
+    // a-z: 1-26
+    // A-Z: 27-52
     const ascii = letter.charCodeAt(0);
     return (ascii < 95) ? (ascii - 64 + 26) : (ascii - 96)
 };
